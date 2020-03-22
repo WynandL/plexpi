@@ -1,4 +1,8 @@
 #ls
+echo -e "Enabling ssh..."
+sudo systemctl enable ssh
+sudo systemctl start ssh
+
 sudo apt-get update && sudo apt-get upgrade -y
 sudo apt-get update && sudo apt-get dist-upgrade -y
 
