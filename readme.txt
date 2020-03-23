@@ -1,7 +1,12 @@
 The plex.sh is a script file and must be downloaded to the PI and executed
-To download the file to the PI, use: sudo wget 
+
+To download the file to the PI, use: 
+sudo wget https://raw.githubusercontent.com/WynandL/plexpi/master/plex.sh
+
 It can be downloaded anywhere on the PI, so root is fine (it will be deleted again by the script)
-To execute the script, type: bash plex.sh
+To execute the script, type:
+bash plex.sh
+
 When the script has completed, the PI will be restarted and can be accessed remotely from Putty (192.168.1.200)
 
 Before running the script:
