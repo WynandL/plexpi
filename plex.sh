@@ -34,7 +34,7 @@ sudo systemctl restart smbd
 #https://thepihut.com/blogs/raspberry-pi-tutorials/how-to-give-your-raspberry-pi-a-static-ip-address-update
 echo -e "interface eth0\nstatic ip_address=192.168.1.200/24\nstatic routers=192.168.1.1" | sudo tee -a /etc/dhcpcd.conf
 
-#Edit the fstab file so that the HDD is mounted each time the PI reboots
+#Edit the fstab file so that the HDD (sda1 assumed) is mounted each time the PI reboots
 #The manual way to do this is by: sudo mount /dev/sda1 /mnt/mydisk
 echo -e "/dev/sda1 /mnt/mydisk ntfs defaults 0 0" | sudo tee -a /etc/fstab
 
