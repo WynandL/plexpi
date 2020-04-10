@@ -38,6 +38,19 @@ echo -e "interface eth0\nstatic ip_address=192.168.1.200/24\nstatic routers=192.
 #The manual way to do this is by: sudo mount /dev/sda1 /mnt/mydisk
 echo -e "/dev/sda1 /mnt/mydisk ntfs defaults 0 0" | sudo tee -a /etc/fstab
 
+########################################################################################
+#install GIT to manage library files for Plex
+#sudo apt install git -y
+
+#Create folder where libraries will be backed up
+#sudo mkdir /home/pi/plexlib
+
+#Copy library files to this directory - first stop plex...
+#sudo service plexmediaserver stop
+
+#wget into plex library folder
+#sudo cp /var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/Plug-in\ Support/Databases/com.plexapp.plugins.library.db /home/pi/plexlib
+#########################################################################################
 #Delete the plex.sh file again so that it cannot be run (bash) again
 sudo rm plex.sh
 
