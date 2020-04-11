@@ -51,6 +51,13 @@ echo -e "/dev/sda1 /mnt/mydisk ntfs defaults 0 0" | sudo tee -a /etc/fstab
 #wget into plex library folder
 #sudo cp /var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/Plug-in\ Support/Databases/com.plexapp.plugins.library.db /home/pi/plexlib
 #########################################################################################
+#retrieve library copy script
+sudo wget https://raw.githubusercontent.com/WynandL/plexpi/master/plexlib.sh
+
+#put this script into crontab, wil execute 00h00 each night
+line="0 0 * * * /home/pi/plexlib.sh"
+(crontab -u pi -l; echo "$line" ) | crontab -u pi -
+
 #Delete the plex.sh file again so that it cannot be run (bash) again
 sudo rm plex.sh
 
