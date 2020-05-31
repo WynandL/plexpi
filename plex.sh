@@ -20,7 +20,7 @@ sudo mkdir /mnt/mydisk
 
 #Install samba, required to read and write to PI-attached HDD
 #https://pimylifeup.com/raspberry-pi-samba/
-sudo apt-get install samba samba-common-bin #yes
+sudo apt-get install samba samba-common-bin -y #yes
 
 #Configure the samba config file and create myPi folder (seen by windows if \\ip is accessed)
 #HDD will be mounted onto /mnt/mydisk
@@ -51,6 +51,7 @@ echo -e "/dev/sda1 /mnt/mydisk ntfs defaults 0 0" | sudo tee -a /etc/fstab
 #wget into plex library folder
 #sudo cp /var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/Plug-in\ Support/Databases/com.plexapp.plugins.library.db /home/pi/plexlib
 #########################################################################################
+
 #Delete the plex.sh file again so that it cannot be run (bash) again
 sudo rm plex.sh
 
