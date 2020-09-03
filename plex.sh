@@ -32,7 +32,10 @@ sudo systemctl restart smbd
 
 #Change the PI's ip address on ethernet (eth0 assumed) to a static one by configuring the dhcpcd.conf file
 #https://thepihut.com/blogs/raspberry-pi-tutorials/how-to-give-your-raspberry-pi-a-static-ip-address-update
-echo -e "interface eth0\nstatic ip_address=192.168.1.200/24\nstatic routers=192.168.1.1" | sudo tee -a /etc/dhcpcd.conf
+#New (strange - Aug 2020) Buster behaviour - need to add static domain name:
+#old -> echo -e "interface eth0\nstatic ip_address=192.168.1.200/24\nstatic routers=192.168.1.1" | sudo tee -a /etc/dhcpcd.conf
+#new ->
+echo -e "interface eth0\nstatic ip_address=192.168.1.200/24\nstatic routers=192.168.1.1\nstatic domain_name_servers=8.8.8.8 8.8.4.4" | sudo tee -a /etc/dhcpcd.conf
 
 #New (strange - Aug 2020) Buster behaviour - need to add these commands else there is no internet connection on the PI
 #https://www.raspberrypi.org/forums/viewtopic.php?t=121934
