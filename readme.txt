@@ -1,5 +1,11 @@
 The plex.sh is a script file and must be downloaded to the PI and executed
 
+Before running the script:
+1. Ensure there is a Videos folder on the external HDD and it is plugged in (USB)
+2. Ensure there is a iCloudAlwaysOn folder on the external HDD - or remove the samba command in the script
+3. Ensure that the current network runs on 192.168.1.X
+4. Keep the keyboard attached, there will be 2 prompts to answer yes on
+
 To download the file to the PI, use: 
 sudo wget https://raw.githubusercontent.com/WynandL/plexpi/master/plex.sh
 
@@ -8,11 +14,6 @@ To execute the script, type:
 bash plex.sh
 
 When the script has completed, the PI will be restarted and can be accessed remotely from Putty (192.168.1.200)
-
-Before running the script:
-1. Ensure there is a Videos folder on the external HDD and it is plugged in (USB)
-2. Ensure that the current network runs on 192.168.1.X
-3. Keep the keyboard attached, there will be 2 prompts to answer yes on
 
 After the script has completed:
 Log in to Plex on the browser (192.168.1.200:32400/web/index.html) and configure the library
