@@ -28,6 +28,10 @@ sudo apt-get install samba samba-common-bin -y #yes
 #Below, a public connection, for Windows, will be created linking myPi to the Videos folder on HDD
 #Ensure that there is a Videos folder on the HDD root
 sudo echo -e "[myPi]\npath = /mnt/mydisk/Videos\nwriteable=Yes\ncreate mask=0777\ndirectory mask=0777\npublic=yes" | sudo tee -a /etc/samba/smb.conf
+#To add any additional files, such as one for constant iCloud storage backup, again ensure the folder exist on the HDD and repeat above, e.g.
+#Windows (at the ip address) will now also see iCloud as a new location, linked to the iCloudAlwaysOn folder on the HDD
+sudo echo -e "[iCloud]\npath = /mnt/mydisk/iCloudAlwaysOn\nwriteable=Yes\ncreate mask=0777\ndirectory mask=0777\npublic=yes" | sudo tee -a /etc/samba/smb.conf
+#restart samba after all (and any new) changes
 sudo systemctl restart smbd
 
 #Change the PI's ip address on ethernet (eth0 assumed) to a static one by configuring the dhcpcd.conf file
