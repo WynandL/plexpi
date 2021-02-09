@@ -45,6 +45,10 @@ echo -e "interface eth0\nstatic ip_address=192.168.1.200/24\nstatic routers=192.
 #https://www.raspberrypi.org/forums/viewtopic.php?t=121934
 sudo echo -e "auto lo\niface lo inet loopback\nauto eth0\nallow-hotplug eth0\niface eth0 inet manual" | sudo tee -a /etc/network/interfaces
 
+#If WiFi is preferred, uncomment the following lines and comment out the echo -e "interface eth0 line
+#echo -e "network={\nssid=lamps\npsk=rockykangaroo288\n}" | sudo tee -a /etc/wpa_supplicant.conf
+#echo -e "interface wlan0\nstatic ip_address=192.168.1.200/24\nstatic routers=192.168.1.1\nstatic domain_name_servers=8.8.8.8 8.8.4.4" | sudo tee -a /etc/dhcpcd.conf
+
 #Edit the fstab file so that the HDD (sda1 assumed) is mounted each time the PI reboots
 #The manual way to do this is by: sudo mount /dev/sda1 /mnt/mydisk
 echo -e "/dev/sda1 /mnt/mydisk ntfs defaults 0 0" | sudo tee -a /etc/fstab

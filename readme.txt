@@ -5,6 +5,7 @@ Before running the script:
 2. Ensure there is a iCloudAlwaysOn folder on the external HDD - or remove the samba command in the script
 3. Ensure that the current network runs on 192.168.1.X
 4. Keep the keyboard attached, there will be 2 prompts to answer yes on
+5. There is setup lines for ethernet and wifi so (un)comment as needed
 
 To download the file to the PI, use: 
 sudo wget https://raw.githubusercontent.com/WynandL/plexpi/master/plex.sh
