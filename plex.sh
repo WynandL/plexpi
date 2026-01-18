@@ -39,7 +39,7 @@ sudo systemctl restart smbd
 #New (strange - Aug 2020) Buster behaviour - need to add static domain name:
 #old -> echo -e "interface eth0\nstatic ip_address=192.168.1.200/24\nstatic routers=192.168.1.1" | sudo tee -a /etc/dhcpcd.conf
 #new ->
-echo -e "interface eth0\nstatic ip_address=192.168.1.200/24\nstatic routers=192.168.1.1\nstatic domain_name_servers=8.8.8.8 8.8.4.4" | sudo tee -a /etc/dhcpcd.conf
+echo -e "interface eth0\nstatic ip_address=192.168.0.200/24\nstatic routers=192.168.0.1\nstatic domain_name_servers=8.8.8.8 8.8.4.4" | sudo tee -a /etc/dhcpcd.conf
 
 #New (strange - Aug 2020) Buster behaviour - need to add these commands else there is no internet connection on the PI
 #https://www.raspberrypi.org/forums/viewtopic.php?t=121934
