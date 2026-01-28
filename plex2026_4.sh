@@ -1,3 +1,4 @@
+#Copy first three commands, then the next two, and then the last one + reboot (optional)
 sudo groupadd media
 sudo usermod -aG media plex
 sudo usermod -aG media pi
