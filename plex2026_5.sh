@@ -1,3 +1,4 @@
+#sudo wget https://raw.githubusercontent.com/WynandL/plexpi/master/plex2026_5.sh
 ###################################
 #Only checks to see if everything works - or use http://localhost:32400/web
 findmnt /mnt/mydisk
