@@ -147,6 +147,6 @@ fi
 # Restart Samba
 sudo systemctl restart smbd
 
-echo -e "Configuration complete. Restarting in 10 seconds."
-sleep 10
+echo -e "Configuration complete. Restarting in 1 minute."
+sleep 60
 sudo reboot
