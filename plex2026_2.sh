@@ -1,3 +1,4 @@
+#sudo wget https://raw.githubusercontent.com/WynandL/plexpi/master/plex2026_2.sh
 # Install dependencies - entire file can be copied and pasted into CLI
 sudo apt install -y curl gnupg ca-certificates
 
