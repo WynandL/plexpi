@@ -43,6 +43,21 @@ DISK_DEV="/dev/sda1"
 DISK_LABEL="MEDIA"
 MOUNT_POINT="/mnt/mydisk"
 
+# --- Wait for disk to appear ---
+for i in {1..10}; do
+  if [ -b "$DISK_DEV" ]; then
+    break
+  fi
+  echo "Waiting for $DISK_DEV..."
+  sleep 1
+done
+
+# Ensure the disk exists
+if [ ! -b "$DISK_DEV" ]; then
+  echo "Disk $DISK_DEV not found after waiting. Exiting."
+  exit 1
+fi
+
 # Label the disk (safe: overwrites label, not data)
 sudo ntfslabel "$DISK_DEV" "$DISK_LABEL"
 
