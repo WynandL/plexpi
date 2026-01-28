@@ -1,13 +1,22 @@
-sudo nano /etc/samba/smb.conf
+###################################
+#Only checks to see if everything works - or use http://localhost:32400/web
+findmnt /mnt/mydisk
+#Expected output: /mnt/mydisk  /dev/sda1  ntfs  rw,noatime
 
-[myPi]
-path = /mnt/mydisk/Videos
-browseable = yes
-writeable = yes
-guest ok = yes
-create mask = 0775
-directory mask = 0775
+###################################
+#See capacities and all disks, including new mount
+df -h /mnt/mydisk
 
-sudo systemctl restart smbd
+###################################
+#Ensure these directories exist (no errors)
+ls -ld /mnt/mydisk
+ls -ld /mnt/mydisk/Videos
 
-sudo reboot
+###################################
+#Can Plex read the files? (THIS is the key test)
+sudo -u plex ls /mnt/mydisk/Videos
+#Expected output is the list of files
+
+###################################
+systemctl status plexmediaserver #(running?)
+systemctl status smbd #(running?)
