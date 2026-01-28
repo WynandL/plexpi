@@ -19,8 +19,11 @@ echo "deb [signed-by=/usr/share/keyrings/plex.gpg] https://downloads.plex.tv/rep
 sudo tee /etc/apt/sources.list.d/plexmediaserver.list
 
 # Update and install
-sudo apt update
-sudo apt install -y plexmediaserver
+for i in {1..5}; do
+    sudo apt update && sudo apt install -y plexmediaserver && break
+    echo "Retrying Plex repo download ($i)..."
+    sleep 5
+done
 
 #systemctl status plexmediaserver
 
