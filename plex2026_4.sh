@@ -1,3 +1,4 @@
+#sudo wget https://raw.githubusercontent.com/WynandL/plexpi/master/plex2026_4.sh
 #Permissions for Plex + Samba (CRITICAL)
 sudo groupadd media
 sudo usermod -aG media plex
