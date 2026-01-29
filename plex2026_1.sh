@@ -1,4 +1,4 @@
-#sudo wget https://raw.githubusercontent.com/WynandL/plexpi/master/plex2026_1.sh
+# sudo wget https://raw.githubusercontent.com/WynandL/plexpi/master/plex2026_1.sh
 ###################################
 sudo systemctl enable ssh
 sudo systemctl start ssh
@@ -10,8 +10,8 @@ sudo apt full-upgrade -y
 sudo reboot
 
 ###################################
-#Current Pi Network Manager is difficult; keep DHCP for now
-#Plex on TV don't need a static IP (browser will though...)
+# Current Pi Network Manager is difficult; keep DHCP for now
+# Plex on TV don't need a static IP (browser will though...)
 #sudo nmcli con modify "Wired connection 1" \
 #  ipv4.method manual \
 #  ipv4.addresses 192.168.0.200/24 \
