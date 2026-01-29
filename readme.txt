@@ -8,7 +8,7 @@ Before running the script:
 5. There are setup lines for Ethernet and wifi so (un)comment as needed
 
 To download the file to the PI, use: 
-sudo wget https://raw.githubusercontent.com/WynandL/plexpi/master/plex2026.sh
+sudo wget https://raw.githubusercontent.com/WynandL/plexpi/master/plex2026_x.sh
 
 It can be downloaded anywhere on the PI, so root is fine (it will be deleted again by the script)
 To execute the script, type:
