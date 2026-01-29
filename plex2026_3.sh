@@ -1,4 +1,4 @@
-#sudo wget https://raw.githubusercontent.com/WynandL/plexpi/master/plex2026_3.sh
+# sudo wget https://raw.githubusercontent.com/WynandL/plexpi/master/plex2026_3.sh
 ###################################
 sudo mkdir -p /mnt/mydisk
 
