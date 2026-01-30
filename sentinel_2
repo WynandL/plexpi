@@ -1,0 +1,37 @@
+# sudo wget https://raw.githubusercontent.com/WynandL/plexpi/master/sentinel_2.sh
+sudo apt install -y \
+git \
+curl \
+wget \
+unzip \
+build-essential \
+pkg-config \
+cmake \
+usbutils \
+htop
+
+sudo reboot
+
+####################
+ssh-keygen -t ed25519 -C "wynandl@github"
+cat ~/.ssh/id_ed25519.pub
+# Go to GitHub Setting and add new key (copy until before the email address)
+git clone git@github.com:WynandL/rf-monitor.git
+
+####################
+cd rf-monitor
+dotnet restore
+dotnet build -c Release
+cd RtlSdrTest
+
+####################
+# Check instruction below before running this:
+dotnet run -c Release # Should not run the program
+
+####################
+# First open new CLI and start the RTL with:
+rtl_tcp -f 947500000 -s 1000000 -g 16
+
+####################
+# To test if C# code works, kill the TCP and check results (new, 3rd, CLI)
+pkill rtl_tcp
