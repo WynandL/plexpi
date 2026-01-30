@@ -1,0 +1,45 @@
+# sudo wget https://raw.githubusercontent.com/WynandL/plexpi/master/sentinel_1.sh
+sudo apt update
+sudo apt upgrade -y
+sudo reboot
+
+####################
+# Install RTL-TCP drivers and tools
+sudo apt install -y rtl-sdr
+
+####################
+# Blacklist DVB driver
+sudo nano /etc/modprobe.d/no-rtl.conf
+# Paste inside (new file)
+blacklist dvb_usb_rtl28xxu
+sudo reboot
+
+####################
+# Plug in device and test with...
+rtl_test
+#Expected output (important lines):
+#Found 1 device(s):
+#  0: Realtek, RTL2838UHIDIR
+
+####################
+# Download and install .NET 8 SDK
+wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
+chmod +x dotnet-install.sh
+
+####################
+# Install .NET 8 SDK (ARM64)
+./dotnet-install.sh \
+  --channel 8.0 \
+  --architecture arm64
+
+####################
+nano ~/.bashrc
+#Add at the bottom:
+export DOTNET_ROOT=$HOME/.dotnet
+export PATH=$PATH:$HOME/.dotnet:$HOME/.dotnet/tools
+
+#Reload
+source ~/.bashrc
+
+#Verify SDK (this confirms it’s NOT just runtime)
+dotnet --info
