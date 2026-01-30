@@ -12,6 +12,12 @@ sudo apt install -y rtl-sdr
 sudo nano /etc/modprobe.d/no-rtl.conf
 # Paste inside (new file)
 blacklist dvb_usb_rtl28xxu
+
+####################
+# Improve USB stability (disable autosuspend)
+sudo nano /boot/cmdline.txt
+# At the END OF THE LINE add:
+usbcore.autosuspend=-1
 sudo reboot
 
 ####################
