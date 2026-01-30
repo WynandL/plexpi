@@ -15,8 +15,8 @@ blacklist dvb_usb_rtl28xxu
 
 ####################
 # Improve USB stability (disable autosuspend)
-sudo nano /boot/cmdline.txt
-# At the END OF THE LINE add:
+sudo nano /boot/firmware/cmdline.txt
+# At the END OF THE LINE - with a space after the previous - add:
 usbcore.autosuspend=-1
 sudo reboot
 
