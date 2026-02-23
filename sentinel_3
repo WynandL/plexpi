@@ -7,4 +7,4 @@ git pull
 dotnet restore
 dotnet build -c Release
 cd RtlSdrTest
-dotnet run -c Release
+dotnet run -c Release # Updated 23 Feb 2026: Add arguments to call: dotnet run -c Release -- hackrf or dotnet run -c Release -- rtlsdr
