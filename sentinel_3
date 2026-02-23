@@ -1,0 +1,10 @@
+# sudo wget https://raw.githubusercontent.com/WynandL/plexpi/master/sentinel_3.sh
+####################
+# To update the program on the Pi, go to:
+
+cd dev\rf-monitor
+git pull
+dotnet restore
+dotnet build -c Release
+cd RtlSdrTest
+dotnet run -c Release
