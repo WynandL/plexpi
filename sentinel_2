@@ -25,17 +25,17 @@ dotnet build -c Release
 cd RtlSdrTest
 
 ####################
-# Check instruction below before running this:
-dotnet run -c Release # Should not run the program
-# Updated 23 Feb 2026: Add arguments to call: dotnet run -c Release -- hackrf or dotnet run -c Release -- rtlsdr
-
-####################
-# First open new CLI and start the RTL with:
+# If using RTL-SDR, first open new CLI and start the RTL with:
 rtl_tcp -f 947500000 -s 1000000 -g 16
 
 ####################
 # To test if C# code works, kill the TCP and check results (new, 3rd, CLI)
 pkill rtl_tcp
+
+####################
+# In a different CLI, run the program (HackRF wil open hardware and run analyzer, RTL-SDR hardware was opened in previous step, just need analyzer):
+dotnet run -c Release
+# Updated 23 Feb 2026: Add arguments to call: dotnet run -c Release -- hackrf or dotnet run -c Release -- rtlsdr
 
 ####################
 # Install the HackRF ONE driver
