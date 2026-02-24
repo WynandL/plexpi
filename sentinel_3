@@ -7,4 +7,8 @@ git pull
 dotnet restore
 dotnet build -c Release
 cd RtlSdrTest
+
+# If using RTL-SDR, first open new CLI and start the RTL with:
+rtl_tcp -f 947500000 -s 1000000 -g 16
+
 dotnet run -c Release # Updated 23 Feb 2026: Add arguments to call: dotnet run -c Release -- hackrf or dotnet run -c Release -- rtlsdr
