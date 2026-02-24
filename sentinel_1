@@ -1,6 +1,6 @@
 # sudo wget https://raw.githubusercontent.com/WynandL/plexpi/master/sentinel_1.sh
 sudo apt update
-sudo apt upgrade -y
+sudo apt upgrade -y # or sudo apt full-upgrade -y
 sudo reboot
 
 ####################
