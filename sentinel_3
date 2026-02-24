@@ -1,6 +1,6 @@
 # sudo wget https://raw.githubusercontent.com/WynandL/plexpi/master/sentinel_3.sh
 ####################
-# To update the program on the Pi, go to:
+# To update (pull from GIT) the program on the Pi:
 
 cd dev\rf-monitor
 git pull
