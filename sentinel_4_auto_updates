@@ -1,0 +1,94 @@
+ Part 1 — Do this ONCE now (pushes the new scripts to GitHub)                                                                         
+  On your Windows PC
+
+  1. Open Command Prompt (Win+R → type cmd → Enter)
+  2. Navigate to your repo folder:
+  cd C:\Users\wlambrechts\source\repos\RtlSdrTest
+  3. Stage the new scripts and updated CLAUDE.md:
+  git add RtlSdrTest/scripts/pi-setup.sh RtlSdrTest/scripts/pi-update.sh RtlSdrTest/CLAUDE.md
+  4. Commit:
+  git commit -m "Add automated Pi deployment scripts"
+  5. Push to GitHub:
+  git push
+
+  ---
+  Part 2 — Do this ONCE on the Pi (sets up the automation)
+
+  On your Pi (you can sit at it for this part — it's the only time you need to)
+
+  1. Open a Terminal on the Pi (the black screen icon on the taskbar, or right-click desktop → Open Terminal)
+  2. Go to the repo folder:
+  cd ~/rf-monitor
+  3. Pull the latest code (which includes the new scripts you just pushed):
+  git pull
+  4. Make the scripts executable (Linux requires this before running a script):
+  chmod +x RtlSdrTest/scripts/pi-setup.sh RtlSdrTest/scripts/pi-update.sh
+  5. Go into the project folder:
+  cd RtlSdrTest
+  6. Run the setup (use hackrf or rtlsdr depending on which radio you have plugged in):
+  sudo bash scripts/pi-setup.sh hackrf
+  6. This will print progress. It builds the project which takes about a minute. At the end you'll see === Done ===.
+
+  That's it. The Pi is now set up. You never need to do Part 2 again unless you wipe the Pi or move the repo.
+
+  ---
+  Part 3 — Normal day-to-day workflow (after Part 2 is done)
+
+  This is all you ever do going forward:
+
+  On your Windows PC — write your code as normal, then:
+
+  1. Open Command Prompt
+  2. Go to your repo:
+  cd C:\Users\wlambrechts\source\repos\RtlSdrTest
+  3. Stage your changed files (or use git add . if you want everything):
+  git add .
+  4. Commit with a message:
+  git commit -m "whatever you changed"
+  5. Push:
+  git push
+
+  That's all you do on the PC. The Pi handles everything else on its own within 5 minutes.
+
+  ---
+  What the Pi does automatically (you don't touch this)
+
+  Every 5 minutes, the Pi quietly runs a check in the background:
+  - Asks GitHub: "is there anything new on the main branch?"
+  - If no: does nothing, goes back to sleep
+  - If yes:
+    a. Stops the RF monitor app
+    b. Downloads the new code (git pull)
+    c. Builds it (dotnet build)
+    d. Starts the app again with the new code
+
+  If the build fails for some reason (broken code was pushed), the Pi restarts on the previous working version rather than going dark.
+
+  ---
+  Checking what's happening on the Pi (useful for debugging)
+
+  Open a Terminal on the Pi and use these commands:
+
+  Is the app running?
+  sudo systemctl status rf-monitor
+  Look for the word active (running) in green. If it says failed, the app crashed.
+
+  See the live output of the app (what you'd normally see in the terminal when running manually):
+  sudo journalctl -u rf-monitor -f
+  Press Ctrl+C to stop watching.
+
+  Did an automatic update happen? Did it succeed?
+  sudo journalctl -u rf-monitor-updater -f
+  You'll see timestamped lines like Up to date (nothing to do) or Update detected: abc123 → def456 followed by the build and restart
+  steps.
+
+  Force an update right now (don't wait 5 minutes):
+  sudo bash ~/rf-monitor/RtlSdrTest/scripts/pi-update.sh
+
+  Restart the app manually (if it crashed or you stopped it):
+  sudo systemctl start rf-monitor
+
+  Stop the app (if you want to do manual testing):
+  sudo systemctl stop rf-monitor
+
+✻ Crunched for 55s
