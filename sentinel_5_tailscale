@@ -1,0 +1,4 @@
+sudo bash scripts/pi-setup.sh hackrf
+sudo tailscale up        # follow the URL, one-time auth
+
+After that, http://<pi-tailscale-hostname>:8080 works from your phone, work PC, anywhere.
